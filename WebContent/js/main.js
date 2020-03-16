@@ -2,7 +2,7 @@ var rootURL = "http://localhost:8080/flowers-web/rest/flowers";
 
 // when DOM is ready
 $(document).ready(function() {
-	$('#example').DataTable({
+	$('#list').DataTable({// create a datatable list
 		"ajax" : {
 			"url" : rootURL,
 			"dataSrc" : ""
@@ -17,8 +17,9 @@ $(document).ready(function() {
 			"data" : "price"
 		}, {
 			data : null,
-			className : "center",// edit column
-			defaultContent : '<a href="" class="editor_edit">Edit</a>'
+			className : "center",// edit
+			// column
+			defaultContent : '<a href=""class="editor_edit">Edit</a>'
 
 		} ]
 
@@ -42,19 +43,20 @@ var findAll = function() {
 var renderList = function(response) {
 	response.data = response;
 	console.log(response);
-	$
-			.each(
-					response,
-					function(index, flower) {
-						$('#flowerList')
-								.append(
-										'<div class="col-sm-6 col-md-4 col-lg-3 mb-5"><div class="card h-100"><a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a><div class="card-body"><h4 class="card-title"><a href="#">'
-												+ flower.productName
-												+ '</a></h4><h5>€'
-												+ flower.price
-												+ '</h5><p class="card-text">'
-												+ flower.description
-												+ '</p></div></div></div>');
+	$.each(response, function(index, flower) {
+		// instead of add the HTML in JS, it was created a template in
+		// index.html and used it in js to keep the good practice
+		var pt = $('#product-template').clone();
+		pt.find('.product-name').text(flower.productName);
+		pt.find('.product-description').text(flower.description);
+		pt.find('.product-price').text('€' + flower.price);
+		pt.attr('id', 'product-id-' + index)
+		pt.find('.product-image').attr('src', flower.picture);
+		pt.show();
 
-					});
+		$('#flowerList').append(pt);
+
+		console.log(pt);
+
+	});
 }
