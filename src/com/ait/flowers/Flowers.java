@@ -11,7 +11,7 @@ public class Flowers {
 	private String mainColor;
 	private String available;
 	private int occasionId;
-	private String enviroment;
+	private String environment;
 	private String dimensions;
 	private double price;
 	private String picture;
@@ -64,12 +64,12 @@ public class Flowers {
 		this.occasionId = occasionId;
 	}
 
-	public String getEnviroment() {
-		return enviroment;
+	public String getenvironment() {
+		return environment;
 	}
 
-	public void setEnviroment(String enviroment) {
-		this.enviroment = enviroment;
+	public void setenvironment(String environment) {
+		this.environment = environment;
 	}
 
 	public String getDimensions() {

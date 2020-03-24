@@ -12,17 +12,17 @@ import org.junit.jupiter.api.Test;
 
 import com.ait.flowers.ConnectionHelper;
 import com.ait.flowers.Flowers;
-import com.ait.flowers.FlowersDao;
+import com.ait.flowers.FlowersDAO;
 
-class FlowersDaoTest {
+class FlowersDAOtest {
 
 	private Connection cn;
-	private FlowersDao dao;
+	private FlowersDAO dao;
 
 	@BeforeEach
 	public void init() throws ClassNotFoundException, SQLException {
 		cn = ConnectionHelper.getConnection();
-		dao = new FlowersDao();
+		dao = new FlowersDAO();
 
 	}
 
@@ -53,7 +53,7 @@ class FlowersDaoTest {
 		product.setMainColor("Yellow");
 		product.setAvailable("Y");
 		product.setOccasionId(3);
-		product.setEnviroment("Outdoor");
+		product.setenvironment("Outdoor");
 		product.setDimensions("15x10x5");
 		product.setPrice(20.00);
 		product.setPicture("img.test");
@@ -62,7 +62,7 @@ class FlowersDaoTest {
 		assertEquals("Yellow", product.getMainColor());
 		assertEquals("Y", product.getAvailable());
 		assertEquals(3, product.getOccasionId());
-		assertEquals("Outdoor", product.getEnviroment());
+		assertEquals("Outdoor", product.getenvironment());
 		assertEquals("15x10x5", product.getDimensions());
 		assertEquals(20.00, product.getPrice());
 		assertEquals("img.test", product.getPicture());

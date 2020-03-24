@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/flowers")
 public class FlowersResource {
 
-	FlowersDao dao = new FlowersDao();
+	FlowersDAO dao = new FlowersDAO();
 
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
@@ -57,7 +57,7 @@ public class FlowersResource {
 	@DELETE
 	@Path("{product_id}")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public void remove(@PathParam("product_id") int id) {//ok-1001
+	public void remove(@PathParam("product_id") int id) {// ok-1001
 		dao.remove(id);
 	}
 
@@ -65,15 +65,15 @@ public class FlowersResource {
 	@Path("searchByDescription/{query}")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public List<Flowers> findByDescription(@PathParam("query") String query) {
-		System.out.println("findByDescription: " + query);//ok
+		System.out.println("findByDescription: " + query);// ok
 		return dao.findByDescription(query);
 	}
-	
+
 	@GET
 	@Path("searchByOccasion/{query}")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public List<Flowers> findByOccasion(@PathParam("query") String query) {
-		System.out.println("findByOccasion " + query);//ok
+		System.out.println("findByOccasion " + query);// ok
 		return dao.findByOccasion(query);
 	}
 

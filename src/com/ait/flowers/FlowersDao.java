@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlowersDao {
+public class FlowersDAO {
 //•	Getting details on all products(entities)
 	public List<Flowers> findAll() {
 		List<Flowers> list = new ArrayList<Flowers>();
@@ -38,7 +38,7 @@ public class FlowersDao {
 		product.setMainColor(rs.getString("main_color"));
 		product.setAvailable(rs.getString("available"));
 		product.setOccasionId(rs.getInt("occasion_id"));
-		product.setEnviroment(rs.getString("enviroment"));
+		product.setenvironment(rs.getString("environment"));
 		product.setDimensions(rs.getString("dimensions"));
 		product.setPrice(rs.getDouble("price"));
 		product.setPicture(rs.getString("picture"));
@@ -76,14 +76,14 @@ public class FlowersDao {
 		try {
 			c = ConnectionHelper.getConnection();
 			ps = c.prepareStatement("INSERT INTO products "
-					+ "(product_name, product_description, main_color,available,occasion_id, enviroment, dimensions, price, picture)"
+					+ "(product_name, product_description, main_color,available,occasion_id, environment, dimensions, price, picture)"
 					+ " VALUES (?,?,?,?,?,?,?,?,?)", new String[] { "product_id" });
 			ps.setString(1, product.getProductName());
 			ps.setString(2, product.getDescription());
 			ps.setString(3, product.getMainColor());
 			ps.setString(4, product.getAvailable());
 			ps.setInt(5, product.getOccasionId());
-			ps.setString(6, product.getEnviroment());
+			ps.setString(6, product.getenvironment());
 			ps.setString(7, product.getDimensions());
 			ps.setDouble(8, product.getPrice());
 			ps.setString(9, product.getPicture());
@@ -109,14 +109,14 @@ public class FlowersDao {
 		try {
 			c = ConnectionHelper.getConnection();
 			PreparedStatement ps = c.prepareStatement(
-					"UPDATE products SET product_name=?, product_description=?, main_color=?, available=?, occasion_id=?, enviroment=?, dimensions=?, "
+					"UPDATE products SET product_name=?, product_description=?, main_color=?, available=?, occasion_id=?, environment=?, dimensions=?, "
 							+ "price=?, picture=? WHERE product_id=?");
 			ps.setString(1, product.getProductName());
 			ps.setString(2, product.getDescription());
 			ps.setString(3, product.getMainColor());
 			ps.setString(4, product.getAvailable());
 			ps.setInt(5, product.getOccasionId());
-			ps.setString(6, product.getEnviroment());
+			ps.setString(6, product.getenvironment());
 			ps.setString(7, product.getDimensions());
 			ps.setDouble(8, product.getPrice());
 			ps.setString(9, product.getPicture());
