@@ -11,3 +11,7 @@ Firstly, the admin staff can be able to view, update, and delete a specific prod
 * JQuery
 - MySQL
 + Bootstrap
+
+### Overview
+![Alt Text](https://github.com/JoyceSM/flowers-web/blob/master/WebContent/images/flowers_web.gif)
+
